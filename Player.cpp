@@ -6,7 +6,7 @@
 #include "Bullet.h"
 #include "Enemy.h"
 
-Player::Player(QGraphicsItem *parent): QGraphicsRectItem(parent){
+Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     bulletSound = new QMediaPlayer();
     bulletSound->setMedia(QUrl("qrc:/sounds/sounds/gunshot.wav"));
     bulletSound->setVolume(50);
@@ -15,11 +15,11 @@ Player::Player(QGraphicsItem *parent): QGraphicsRectItem(parent){
 void Player::keyPressEvent(QKeyEvent *event){
     // move the player left and right
     if (event->key() == Qt::Key_Left){
-        if (pos().x() > 0)
+        if (pos().x() > 200)
         setPos(x()-10,y());
     }
     else if (event->key() == Qt::Key_Right){
-        if (pos().x() + 100 < 800)
+        if (pos().x() + pixmap().width() < 600)
         setPos(x()+10,y());
     }
     // shoot with the spacebar

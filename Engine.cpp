@@ -21,13 +21,15 @@ Engine::Engine(QWidget *parent){
 
     // create the player
     player = new Player();
-    player->setRect(0,0,100,100); // change the rect from 0x0 (default) to 100x100 pixels
-    player->setPos(400,500); // TODO generalize to always be in the middle bottom of screen
+    player->setPixmap(QPixmap(":/images/player.png"));
+    player->setPos(scene->width()/2 - player->pixmap().width(), scene->height() - player->pixmap().height());
     // make the player focusable and set it to be the current focus
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     // add the player to the scene
     scene->addItem(player);
+
+    setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
 
 
     // spawn enemies

@@ -4,10 +4,10 @@
 
 #include <QGraphicsRectItem>
 #include <QObject>
-#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 #include <QMediaPlayer>
 
-class Player:public QObject, public QGraphicsRectItem{
+class Player:public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Player(QGraphicsItem * parent=0);
