@@ -1,51 +1,11 @@
-//#include <Engine.h>
-//#include <QTimer>
-//#include "Enemy.h"
 
-
-//Engine::Engine(QWidget * parent){
-
-
-//    // make scene and show that
-//    scene = new QGraphicsScene();
-//    setSceneRect(0, 0, 800, 600);
-//    setScene(scene);
-
-//    // initialize the size of game display
-//    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//    setFixedSize(800, 600);
-
-
-//    // make the player, set its position
-//    player = new Player();
-//    // make focus on the player
-//    player->setFlag(QGraphicsItem::ItemIsFocusable);
-//    player->setFocus();
-
-//    player->setRect(0, 0, 100, 100);
-//    player->setPos(width()/2, height() + 19);
-
-
-//    scene->addItem(player);
-
-
-
-
-//    QTimer * timer = new QTimer();
-//    connect(timer, SIGNAL(timeout()), player, SLOT(createEnemy()));
-//    timer->start(1000);
-
-
-//    show();
-//}
-
-#include "Engine.h"
 #include <QTimer>
 #include <QGraphicsTextItem>
 #include <QFont>
-#include "Enemy.h"
 #include <QMediaPlayer>
+
+#include "Enemy.h"
+#include "Engine.h"
 
 Engine::Engine(QWidget *parent){
     // create the scene

@@ -1,44 +1,14 @@
-//#include <Bullet.h>
-//#include <Engine.h>
-//#include <QGraphicsScene>
-//#include <QTimer>
-//#include <QObject>
-//#include <QMediaPlayer>
 
-
-
-//extern Engine * engine;
-
-
-
-//Bullet::Bullet(QGraphicsItem * parent): QGraphicsRectItem(parent){
-//    // make the bullet shape as a rectangle
-//    setRect(0, 0, 10, 50);
-
-//    // timer starts in order to move the bullet each 50 miliseconds
-//    QTimer * timer = new QTimer(this);
-//    connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-//    timer->start(50);
-
-
-
-//}
-
-//void Bullet::move(){
-//    setPos(x(), y() - 10);
-
-//}
-
-
-#include "Bullet.h"
 #include <QTimer>
 #include <QGraphicsScene>
-#include "Enemy.h"
-#include "Engine.h"
 #include <typeinfo>
 #include <QDebug>
 #include <QString>
 #include <QList>
+
+#include "Enemy.h"
+#include "Engine.h"
+#include "Bullet.h"
 
 extern Engine * engine; // there is an external global object called game
 
@@ -56,6 +26,7 @@ Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent){
      explosionSound->setMedia(QUrl("qrc:/sounds/sounds/Explosion.wav"));
      explosionSound->setVolume(100);
 }
+
 void Bullet::move(){
     // get a list of all the items currently colliding with this bullet
     QList<QGraphicsItem *> colliding_items = collidingItems();
