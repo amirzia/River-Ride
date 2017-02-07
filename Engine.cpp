@@ -46,11 +46,16 @@
 #include <QFont>
 #include "Enemy.h"
 #include <QMediaPlayer>
+#include <QBrush>
+#include <QImage>
+
 
 Engine::Engine(QWidget *parent){
     // create the scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,800,600); // make the scene 800x600 instead of infinity by infinity (default)
+    scene->setBackgroundBrush(QBrush(QImage(":/image/image/background.png")));
+
 
     // make the newly created scene the scene to visualize (since Game is a QGraphicsView Widget,
     // it can be used to visualize scenes)

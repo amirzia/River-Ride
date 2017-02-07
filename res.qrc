@@ -3,4 +3,7 @@
         <file>sounds/gunshot.wav</file>
         <file>sounds/Explosion.wav</file>
     </qresource>
+    <qresource prefix="/image">
+        <file>image/background.png</file>
+    </qresource>
 </RCC>
