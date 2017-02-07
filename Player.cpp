@@ -27,7 +27,7 @@ void Player::keyPressEvent(QKeyEvent *event){
     else if (event->key() == Qt::Key_Space){
         // create a bullet
         Bullet * bullet = new Bullet();
-        bullet->setPos(x(),y());
+        bullet->setPos(x() + pixmap().width()/2 - bullet->pixmap().width()/2,y());
         scene()->addItem(bullet);
 
         // play bulletsound

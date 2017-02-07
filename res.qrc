@@ -10,5 +10,6 @@
         <file>heli.png</file>
         <file>naftkesh.png</file>
         <file>jet.png</file>
+        <file>bullet.png</file>
     </qresource>
 </RCC>
