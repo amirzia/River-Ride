@@ -3,19 +3,39 @@
 #include <QGraphicsScene>
 #include <QList>
 #include <stdlib.h> // rand() -> really large int
+#include <QGraphicsPixmapItem>
+#include <QPixmap>
 
 #include "Engine.h"
 #include "Enemy.h"
 
 extern Engine * engine;
 
-Enemy::Enemy(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent){
-    //set random x position
-    int random_number = rand() % 700;
-    setPos(random_number,0);
+int Enemy::getValue() { return value; }
 
-    // drew the rect
-    setRect(0,0,100,100);
+Enemy::Enemy(QGraphicsItem *parent, int type): QObject(), QGraphicsPixmapItem(parent){
+    this->type = type;
+    switch (type) {
+        case 0:
+            setPixmap(QPixmap(":images/jet.png"));
+            break;
+        case 1:
+            setPixmap(QPixmap(":images/ballon.png"));
+            break;
+        case 2:
+            setPixmap(QPixmap(":images/heli.png"));
+            break;
+        case 3:
+            setPixmap(QPixmap(":images/naftkesh.png"));
+            break;
+        case 4:
+            setPixmap(QPixmap(":images/fuel.png"));
+            break;
+    }
+
+    //set random x position
+    int random_number = rand() % (400 - pixmap().width()) + 200;
+    setPos(random_number, 0);
 
     // make/connect a timer to move() the enemy every so often
     QTimer * timer = new QTimer(this);
@@ -31,7 +51,7 @@ void Enemy::move(){
 
     // destroy enemy when it goes out of the screen
     if (pos().y() > 600){
-        //decrease the health
+//        decrease the health
 //        engine->health->decrease();
 
         scene()->removeItem(this);

@@ -1,6 +1,7 @@
 
 #include <QGraphicsScene>
 #include <QKeyEvent>
+#include <stdlib.h>
 
 #include "Player.h"
 #include "Bullet.h"
@@ -36,12 +37,12 @@ void Player::keyPressEvent(QKeyEvent *event){
         else if (bulletSound->state() == QMediaPlayer::StoppedState){
             bulletSound->play();
         }
-
     }
 }
 
 void Player::createEnemy(){
     // create an enemy
-    Enemy * enemy = new Enemy();
+    int type = rand() % 5;
+    Enemy * enemy = new Enemy(0 ,type);
     scene()->addItem(enemy);
 }
