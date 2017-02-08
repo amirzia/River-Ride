@@ -17,13 +17,15 @@ SOURCES += main.cpp \
     Engine.cpp \
     Bullet.cpp \
     Player.cpp \
-    Enemy.cpp
+    Enemy.cpp \
+    tree.cpp
 
 HEADERS  += \
     Bullet.h \
     Enemy.h \
     Player.h \
-    Engine.h
+    Engine.h \
+    tree.h
 
 FORMS    +=
 

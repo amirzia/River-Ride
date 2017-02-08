@@ -2,10 +2,13 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <stdlib.h>
+#include <QDebug>
+#include <QTimer>
 
 #include "Player.h"
 #include "Bullet.h"
 #include "Enemy.h"
+#include "tree.h"
 
 Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     bulletSound = new QMediaPlayer();
@@ -45,4 +48,15 @@ void Player::createEnemy(){
     int type = rand() % 5;
     Enemy * enemy = new Enemy(0 ,type);
     scene()->addItem(enemy);
+}
+
+void Player::createTree() {
+    Tree *tree = new Tree();
+    int pos = (rand() % (200 - tree->pixmap().width())) + (rand() % 2) * 600;
+    scene()->addItem(tree);
+    tree->setPos(pos, 20);
+
+    QTimer * timer = new QTimer();
+    QObject::connect(timer, SIGNAL(timeout()), tree, SLOT(moveDown()));
+    timer->start(50);
 }

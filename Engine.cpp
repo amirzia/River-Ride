@@ -3,6 +3,9 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 #include <QMediaPlayer>
+#include <tree.h>
+#include <stdlib.h>
+#include <QDebug>
 
 #include "Enemy.h"
 #include "Engine.h"
@@ -37,6 +40,9 @@ Engine::Engine(QWidget *parent){
     QObject::connect(timer,SIGNAL(timeout()),player,SLOT(createEnemy()));
     timer->start(2000);
 
+    QTimer *timer2 = new QTimer();
+    QObject::connect(timer2, SIGNAL(timeout()), player, SLOT(createTree()));
+    timer2->start(3000);
 
     show();
 }

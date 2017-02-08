@@ -11,5 +11,6 @@
         <file>naftkesh.png</file>
         <file>jet.png</file>
         <file>bullet.png</file>
+        <file>tree.png</file>
     </qresource>
 </RCC>

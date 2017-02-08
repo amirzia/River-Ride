@@ -15,7 +15,8 @@ public:
     Player * player;
 //    Score * score;
 //    Health * health;
-
+public slots:
+    void createTree();
 };
 
 #endif // ENGINE_H
