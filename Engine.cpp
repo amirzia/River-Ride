@@ -22,6 +22,9 @@ Engine::Engine(QWidget *parent){
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(800,600);
 
+    score = new Score();
+    scene->addItem(score);
+
     // create the player
     player = new Player();
     player->setPixmap(QPixmap(":/images/player.png"));

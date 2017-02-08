@@ -22,6 +22,7 @@ public:
 
     int getValue();
     Enemy(QGraphicsItem * parent=0, int type = 0);
+    int getScore();
 public slots:
     void move();
 };

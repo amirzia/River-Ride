@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include "Player.h"
+#include "score.h"
 
 class Engine: public QGraphicsView{
 public:
@@ -13,7 +14,7 @@ public:
 
     QGraphicsScene * scene;
     Player * player;
-//    Score * score;
+    Score * score;
 //    Health * health;
 public slots:
     void createTree();

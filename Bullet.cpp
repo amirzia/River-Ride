@@ -39,6 +39,9 @@ void Bullet::move(){
             scene()->removeItem(colliding_items[i]);
             scene()->removeItem(this);
 
+            Enemy * enemy = (Enemy*)colliding_items[i];
+            engine->score->addScore(enemy->getScore());
+
             // delete them from the heap to save memory
             delete colliding_items[i];
             delete this;

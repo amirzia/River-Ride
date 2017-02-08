@@ -45,6 +45,26 @@ Enemy::Enemy(QGraphicsItem *parent, int type): QObject(), QGraphicsPixmapItem(pa
     timer->start(50);
 }
 
+int Enemy::getScore() {
+    switch (type) {
+        case 0:
+            return 100;
+            break;
+        case 1:
+            return 60;
+            break;
+        case 2:
+            return 60;
+            break;
+        case 3:
+            return 30;
+            break;
+        case 4:
+            return 150;
+        break;
+    };
+}
+
 void Enemy::move(){
     // move enemy down
     setPos(x(),y()+5);
