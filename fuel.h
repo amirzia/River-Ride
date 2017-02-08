@@ -10,9 +10,9 @@ class Fuel: public QGraphicsTextItem {
 public:
     Fuel();
     void addFuel();
+    void collide();
 public slots:
     void decrease();
-    void collide();
 };
 
 #endif // FUEL_H

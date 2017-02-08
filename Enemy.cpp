@@ -75,6 +75,8 @@ void Enemy::move(){
         if (typeid(*(colliding_items[i])) == typeid(Player)) {;
             if (type == Enemy::Type::fuel_depot) {
                 engine->fuel->addFuel();
+            } else {
+                engine->fuel->collide();
             }
 
             scene()->removeItem(this);
