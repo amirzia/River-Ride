@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     Player.cpp \
     Enemy.cpp \
     tree.cpp \
-    score.cpp
+    score.cpp \
+    fuel.cpp
 
 HEADERS  += \
     Bullet.h \
@@ -27,7 +28,8 @@ HEADERS  += \
     Player.h \
     Engine.h \
     tree.h \
-    score.h
+    score.h \
+    fuel.h
 
 FORMS    +=
 

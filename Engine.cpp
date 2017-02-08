@@ -25,6 +25,11 @@ Engine::Engine(QWidget *parent){
     score = new Score();
     scene->addItem(score);
 
+    fuel = new Fuel();
+    scene->addItem(fuel);
+    fuel->setPos(20, 20);
+
+
     // create the player
     player = new Player();
     player->setPixmap(QPixmap(":/images/player.png"));
@@ -46,6 +51,11 @@ Engine::Engine(QWidget *parent){
     QTimer *timer2 = new QTimer();
     QObject::connect(timer2, SIGNAL(timeout()), player, SLOT(createTree()));
     timer2->start(3000);
+
+    QTimer * fuelTimer = new QTimer();
+    QObject::connect(fuelTimer, SIGNAL(timeout()), fuel, SLOT(decrease()));
+    fuelTimer->start(1000);
+
 
     show();
 }

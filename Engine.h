@@ -7,6 +7,7 @@
 #include <QGraphicsScene>
 #include "Player.h"
 #include "score.h"
+#include "fuel.h"
 
 class Engine: public QGraphicsView{
 public:
@@ -15,7 +16,8 @@ public:
     QGraphicsScene * scene;
     Player * player;
     Score * score;
-//    Health * health;
+    Fuel * fuel;
+
 public slots:
     void createTree();
 };

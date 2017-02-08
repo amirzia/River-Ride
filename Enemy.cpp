@@ -5,6 +5,7 @@
 #include <stdlib.h> // rand() -> really large int
 #include <QGraphicsPixmapItem>
 #include <QPixmap>
+#include <QList>
 
 #include "Engine.h"
 #include "Enemy.h"
@@ -68,6 +69,18 @@ int Enemy::getScore() {
 void Enemy::move(){
     // move enemy down
     setPos(x(),y()+5);
+
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        if (typeid(*(colliding_items[i])) == typeid(Player)) {;
+            if (type == Enemy::Type::fuel_depot) {
+                engine->fuel->addFuel();
+            }
+
+            scene()->removeItem(this);
+            delete this;
+        }
+    }
 
     // destroy enemy when it goes out of the screen
     if (pos().y() > 600){
