@@ -27,7 +27,7 @@ Engine::Engine(QWidget *parent){
 
     fuel = new Fuel();
     scene->addItem(fuel);
-    fuel->setPos(20, 20);
+    fuel->setPos(0, 20);
 
 
     // create the player
