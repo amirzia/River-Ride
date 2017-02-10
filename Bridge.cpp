@@ -1,7 +1,7 @@
 
 #include <QGraphicsScene>
 #include <Bridge.h>
-
+#include <QDebug>
 Bridge::Bridge(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     setPixmap(QPixmap(":/images/Bridge.JPG"));
 }
@@ -11,6 +11,7 @@ void Bridge::moveDown() {
     if (y() >= 600) {
         scene()->removeItem(this);
         delete this;
+        qDebug() << "Bridge removed!";
     }
 }
 

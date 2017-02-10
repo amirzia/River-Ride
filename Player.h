@@ -20,8 +20,9 @@ public slots:
 private:
     QMediaPlayer * bulletSound;
     int enemySpeed;
+    int level;
 public slots:
-    void increseLevel();
+    void increaseLevel();
 };
 
 #endif // PLAYER_H

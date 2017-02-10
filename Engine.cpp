@@ -9,11 +9,14 @@
 
 #include "Enemy.h"
 #include "Engine.h"
+#include <QMediaPlayer>
+#include <QDebug>
 
 Engine::Engine(QWidget *parent){
     // create the scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,800,600); // make the scene 800x600 instead of infinity by infinity (default)
+    qDebug() << "scene is created and initialized.";
 
     // make the newly created scene the scene to visualize (since Game is a QGraphicsView Widget,
     // it can be used to visualize scenes)
@@ -28,6 +31,7 @@ Engine::Engine(QWidget *parent){
     fuel = new Fuel();
     scene->addItem(fuel);
     fuel->setPos(0, 20);
+    qDebug() << "Fuel class is created!";
 
 
     // create the player
@@ -41,7 +45,7 @@ Engine::Engine(QWidget *parent){
     scene->addItem(player);
 
     setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
-
+    qDebug() << "Player is created and initialized.";
 
     // spawn enemies
     QTimer * timer = new QTimer();
@@ -56,6 +60,11 @@ Engine::Engine(QWidget *parent){
     QObject::connect(fuelTimer, SIGNAL(timeout()), fuel, SLOT(decrease()));
     fuelTimer->start(1000);
 
+
+    QMediaPlayer * backgroundMusic = new QMediaPlayer();
+    backgroundMusic->setMedia(QUrl("qrc:/sounds/sounds/06 Thrill of the Game.mp3"));
+    backgroundMusic->play();
+    qDebug() << "background music is added to the game.";
 
     show();
 }

@@ -2,6 +2,7 @@
     <qresource prefix="/sounds">
         <file>sounds/gunshot.wav</file>
         <file>sounds/Explosion.wav</file>
+        <file>sounds/06 Thrill of the Game.mp3</file>
     </qresource>
     <qresource prefix="/images">
         <file>player.png</file>

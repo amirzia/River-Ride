@@ -9,7 +9,7 @@
 #include "Bullet.h"
 #include "Enemy.h"
 #include "tree.h"
-
+#include <QMediaPlayer>
 #include <Bridge.h>
 
 Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
@@ -20,10 +20,11 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     enemySpeed = 50;
 
     QTimer * levelTimer = new QTimer(this);
-    connect(levelTimer, SIGNAL(timeout()), this, SLOT(increseLevel()));
-    levelTimer->start(5000);
+    connect(levelTimer, SIGNAL(timeout()), this, SLOT(increaseLevel()));
+    levelTimer->start(20000);
 
     level = 1;
+    qDebug() << "The game started in level one.";
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
@@ -58,11 +59,13 @@ void Player::createEnemy(){
     int type = rand() % 5;
     Enemy * enemy = new Enemy(enemySpeed, 0 ,type);
     scene()->addItem(enemy);
+    qDebug() << "one new enemy is created!";
 }
 
 
 void Player::createBridge(){
     if(level < 5){
+        qDebug() << "one new bridge is created";
         Bridge * bridge = new Bridge();
         scene()->addItem(bridge);
 
@@ -74,6 +77,7 @@ void Player::createBridge(){
 
 
 void Player::createTree() {
+    qDebug() << "one new tree is created.";
     Tree *tree = new Tree();
     int pos = (rand() % (200 - tree->pixmap().width())) + (rand() % 2) * 600;
     scene()->addItem(tree);
@@ -84,18 +88,22 @@ void Player::createTree() {
     timer->start(50);
 }
 
-void Player::increseLevel(){
+void Player::increaseLevel(){
     if(enemySpeed == 50){
+        qDebug() << "Game Level Speed is set to 40";
         enemySpeed = 40;
     }
     else if(enemySpeed == 40){
         enemySpeed = 30;
+        qDebug() << "Game Level Speed is set to 30";
     }
     else if(enemySpeed == 30){
         enemySpeed = 25;
+        qDebug() << "Game Level Speed is set to 25";
     }
     else if(enemySpeed == 25){
-        enemySpeed = 20;
+        enemySpeed = 15;
+        qDebug() << "Game Level Speed is set to 15";
     }
 
     createBridge();

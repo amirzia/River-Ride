@@ -94,5 +94,6 @@ void Enemy::move(){
 
         scene()->removeItem(this);
         delete this;
+        qDebug() << "enemy went out of screen and removed!";
     }
 }

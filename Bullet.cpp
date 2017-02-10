@@ -25,6 +25,7 @@ Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem (parent){
      explosionSound = new QMediaPlayer();
      explosionSound->setMedia(QUrl("qrc:/sounds/sounds/Explosion.wav"));
      explosionSound->setVolume(100);
+     qDebug() << "one new buller is created.";r
 }
 
 void Bullet::move(){
@@ -38,9 +39,11 @@ void Bullet::move(){
             // remove them from the scene (still on the heap)
             scene()->removeItem(colliding_items[i]);
             scene()->removeItem(this);
+            qDebug() << "colliding item removed!";
 
             Enemy * enemy = (Enemy*)colliding_items[i];
             engine->score->addScore(enemy->getScore());
+            qDebug() << "enemy score is added to the player score.";
 
             // delete them from the heap to save memory
             delete colliding_items[i];
