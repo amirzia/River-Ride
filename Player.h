@@ -15,8 +15,13 @@ public:
 public slots:
     void createEnemy();
     void createTree();
+    void createBridge();
+
 private:
     QMediaPlayer * bulletSound;
+    int enemySpeed;
+public slots:
+    void increseLevel();
 };
 
 #endif // PLAYER_H

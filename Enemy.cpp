@@ -9,12 +9,14 @@
 
 #include "Engine.h"
 #include "Enemy.h"
+#include <typeinfo>
+
 
 extern Engine * engine;
 
 int Enemy::getValue() { return value; }
 
-Enemy::Enemy(QGraphicsItem *parent, int type): QObject(), QGraphicsPixmapItem(parent){
+Enemy::Enemy(int speed, QGraphicsItem *parent, int type): QObject(), QGraphicsPixmapItem(parent){
     this->type = type;
     switch (type) {
         case 0:
@@ -34,6 +36,7 @@ Enemy::Enemy(QGraphicsItem *parent, int type): QObject(), QGraphicsPixmapItem(pa
             break;
     }
 
+    this->speed = speed;
     //set random x position
     int random_number = rand() % (400 - pixmap().width()) + 200;
     setPos(random_number, 0);
@@ -43,7 +46,7 @@ Enemy::Enemy(QGraphicsItem *parent, int type): QObject(), QGraphicsPixmapItem(pa
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
 
     // start the timer
-    timer->start(50);
+    timer->start(speed);
 }
 
 int Enemy::getScore() {
@@ -73,7 +76,7 @@ void Enemy::move(){
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         if (typeid(*(colliding_items[i])) == typeid(Player)) {;
-            if (type == Enemy::Type::fuel_depot) {
+            if (type == 4) {
                 engine->fuel->addFuel();
             } else {
                 engine->fuel->collide();

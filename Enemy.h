@@ -11,6 +11,7 @@ class Enemy: public QObject,public QGraphicsPixmapItem {
 private:
     int value;
     int type;
+    int speed;
 public:
     enum Type {
         jet = 0,
@@ -21,10 +22,12 @@ public:
     };
 
     int getValue();
-    Enemy(QGraphicsItem * parent=0, int type = 0);
+    Enemy(int speed, QGraphicsItem * parent=0, int type = 0);
     int getScore();
 public slots:
     void move();
+
+
 };
 
 #endif // ENEMY_H

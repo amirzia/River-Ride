@@ -10,10 +10,20 @@
 #include "Enemy.h"
 #include "tree.h"
 
+#include <Bridge.h>
+
 Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     bulletSound = new QMediaPlayer();
     bulletSound->setMedia(QUrl("qrc:/sounds/sounds/gunshot.wav"));
     bulletSound->setVolume(50);
+
+    enemySpeed = 50;
+
+    QTimer * levelTimer = new QTimer(this);
+    connect(levelTimer, SIGNAL(timeout()), this, SLOT(increseLevel()));
+    levelTimer->start(5000);
+
+
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
@@ -46,9 +56,16 @@ void Player::keyPressEvent(QKeyEvent *event){
 void Player::createEnemy(){
     // create an enemy
     int type = rand() % 5;
-    Enemy * enemy = new Enemy(0 ,type);
+    Enemy * enemy = new Enemy(enemySpeed, 0 ,type);
     scene()->addItem(enemy);
 }
+
+
+void Player::createBridge(){
+    Bridge * bridge = new Bridge();
+    scene()->addItem(bridge);
+}
+
 
 void Player::createTree() {
     Tree *tree = new Tree();
@@ -59,4 +76,21 @@ void Player::createTree() {
     QTimer * timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()), tree, SLOT(moveDown()));
     timer->start(50);
+}
+
+void Player::increseLevel(){
+    if(enemySpeed == 50){
+        enemySpeed = 40;
+    }
+    else if(enemySpeed == 40){
+        enemySpeed = 30;
+    }
+    else if(enemySpeed == 30){
+        enemySpeed = 25;
+    }
+    else if(enemySpeed == 25){
+        enemySpeed = 20;
+    }
+
+    createBridge();
 }
