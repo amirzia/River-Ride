@@ -23,7 +23,7 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     connect(levelTimer, SIGNAL(timeout()), this, SLOT(increseLevel()));
     levelTimer->start(5000);
 
-
+    level = 1;
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
@@ -62,8 +62,14 @@ void Player::createEnemy(){
 
 
 void Player::createBridge(){
-    Bridge * bridge = new Bridge();
-    scene()->addItem(bridge);
+    if(level < 5){
+        Bridge * bridge = new Bridge();
+        scene()->addItem(bridge);
+
+        QTimer * timer = new QTimer();
+        QObject::connect(timer, SIGNAL(timeout()), bridge, SLOT(moveDown()));
+        timer->start(50);
+    }
 }
 
 
